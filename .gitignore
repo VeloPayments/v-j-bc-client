@@ -1,0 +1,16 @@
+build
+target
+tags
+cscope*
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### vscode ####
+.project
+.classpath
+.settings
+.vscode
