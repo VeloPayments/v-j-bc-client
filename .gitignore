@@ -17,3 +17,13 @@ cscope*
 
 # Ignore Gradle project-specific cache directory
 .gradle
+
+# ignore subproject clones
+subprojects/googletest/
+subprojects/minunit/
+subprojects/rcpr/
+subprojects/vcblockchain/
+subprojects/vccert/
+subprojects/vccrypt/
+subprojects/vcmodel/
+subprojects/vpr/
