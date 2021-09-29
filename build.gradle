@@ -1,0 +1,50 @@
+plugins {
+  id 'java'
+  id 'java-library'
+}
+
+dependencies {
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+sourceSets {
+  main {
+    resources {
+      srcDirs "src/main/resources", "build/native/lib"
+    }
+  }
+}
+
+compileJava {
+  options.compilerArgs += ["-h", file("src/main/include")]
+}
+
+task compileJNI {
+  dependsOn compileJava
+
+  doLast {
+    exec {
+      commandLine 'sh', '-c', 'mkdir -p build/native && cd build/native && meson -Dforce_velo_toolchain=false ../.. && ninja && ninja test'
+    }
+  }
+}
+
+clean.doFirst {
+  delete fileTree('src/main/include') {
+    include 'jni_*.h'
+  }
+}
+
+processResources {
+  dependsOn compileJNI
+}
+
+tasks.withType(Test) {
+  systemProperty "java.library.path", "build/native/lib"
+  testLogging.showStandardStreams = false
+}
