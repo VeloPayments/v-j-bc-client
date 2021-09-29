@@ -43,7 +43,7 @@ jni_lib_deps = [vcblockchain]
 jni_include = include_directories('src/main/native/include')
 config_include = include_directories('.')
 
-jni_lib = static_library('v-c-bc-client', src,
+jni_lib = shared_library('v-c-bc-client', src,
   dependencies : jni_lib_deps,
   include_directories: [vcblockchain_include_directories, jni_include, config_include],
 )
