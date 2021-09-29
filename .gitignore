@@ -28,3 +28,6 @@ subprojects/vccert/
 subprojects/vccrypt/
 subprojects/vcmodel/
 subprojects/vpr/
+
+#ignore JNI auto-generated headers
+src/main/include
