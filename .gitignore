@@ -20,6 +20,7 @@ cscope*
 
 # ignore subproject clones
 subprojects/googletest/
+subprojects/lmdb/
 subprojects/minunit/
 subprojects/rcpr/
 subprojects/vcblockchain/
