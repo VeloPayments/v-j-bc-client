@@ -3,13 +3,24 @@ plugins {
   id 'java-library'
 }
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 test {
-  useJUnitPlatform()
+    dependsOn jar
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat = 'full'
+    }
+    doFirst {
+        classpath += jar.outputs.files
+    }
 }
 
 sourceSets {
@@ -24,12 +35,14 @@ compileJava {
   options.compilerArgs += ["-h", file("src/main/include")]
 }
 
+def javaHome = System.properties.find { it.key == "java.home" }.value
+
 task compileJNI {
   dependsOn compileJava
 
   doLast {
     exec {
-      commandLine 'sh', '-c', 'mkdir -p build/native && cd build/native && meson -Dforce_velo_toolchain=false ../.. && ninja && ninja test'
+      commandLine 'sh', '-c', "mkdir -p build/native && cd build/native && meson -Dtool_java_home=$javaHome -Dforce_velo_toolchain=false ../.. && ninja && ninja test"
     }
   }
 }
@@ -47,4 +60,10 @@ processResources {
 tasks.withType(Test) {
   systemProperty "java.library.path", "build/native/lib"
   testLogging.showStandardStreams = false
+}
+
+jar {
+   from('build/native') {
+      include '*.so'
+   }
 }
