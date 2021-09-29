@@ -1,1 +1,2 @@
 option('force_velo_toolchain', type : 'boolean', value : true, yield : true)
+option('tool_java_home', type : 'string', yield : true)

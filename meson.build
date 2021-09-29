@@ -7,6 +7,7 @@ project('v-c-bc-client', 'c', 'cpp',
 message('Using build type: ' + get_option('buildtype'))
 
 force_velo_toolchain = get_option('force_velo_toolchain')
+tool_java_home = get_option('tool_java_home')
 
 if force_velo_toolchain
   cc = meson.get_compiler('c')
@@ -21,6 +22,14 @@ if force_velo_toolchain
   endif
 else
   warning('Not using the blessed velo gcc toolchain. Here be dragons.')
+endif
+
+if target_machine.system() == 'linux'
+    os_name = 'linux'
+elif target_machine.system() == 'openbsd'
+    os_name = 'openbsd'
+else
+    os_name = 'unknown'
 endif
 
 add_project_arguments('-Wall', '-Werror', '-Wextra', language : 'c')
@@ -40,7 +49,13 @@ vcblockchain_include_directories = \
 
 jni_lib_deps = [vcblockchain]
 
-jni_include = include_directories('src/main/native/include')
+java_home_include = tool_java_home / 'include'
+java_home_os_include = java_home_include / os_name
+
+jni_include = include_directories(
+        'src/main/native/include', 'src/main/include', java_home_include,
+        java_home_os_include)
+
 config_include = include_directories('.')
 
 jni_lib = shared_library('v-c-bc-client', src,
