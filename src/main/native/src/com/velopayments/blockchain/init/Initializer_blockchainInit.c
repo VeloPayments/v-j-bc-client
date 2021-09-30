@@ -3,7 +3,7 @@
  *
  * Initialize the vcblockchain subsystem.
  *
- * \copyright 2017-2020 Velo Payments, Inc.  All rights reserved.
+ * \copyright 2017-2021 Velo Payments, Inc.  All rights reserved.
  */
 
 #include <cbmc/model_assert.h>
@@ -88,6 +88,9 @@ Java_com_velopayments_blockchain_init_Initializer_blockchainInit(
         MODEL_PROP_VALID_VCCERT_BUILDER_OPTIONS(&native_inst->builder_opts));
 
     /* register Java classes used by the client library.. */
+    INIT_OR_FAIL(
+        "AttestationException",
+        AttestationException_register(env, native_inst));
 
     /* we are now initialized */
     native_inst->initialized = true;

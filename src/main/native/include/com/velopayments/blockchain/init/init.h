@@ -7,6 +7,7 @@
  */
 #pragma once
 
+#include <com/velopayments/blockchain/cert/AttestationException.h>
 #include <java/lang/IllegalStateException.h>
 #include <rcpr/allocator.h>
 #include <stdbool.h>
@@ -32,6 +33,7 @@ struct vjblockchain_native_instance
     vccrypt_suite_options_t crypto_suite;
     vccert_builder_options_t builder_opts;
 
+    ATTESTATION_EXCEPTION_JAVA_VARS();
     ILLEGAL_STATE_EXCEPTION_JAVA_VARS();
 };
 
