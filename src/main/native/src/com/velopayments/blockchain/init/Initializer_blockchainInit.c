@@ -91,6 +91,9 @@ Java_com_velopayments_blockchain_init_Initializer_blockchainInit(
     INIT_OR_FAIL(
         "AttestationException",
         AttestationException_register(env, native_inst));
+    INIT_OR_FAIL(
+        "Certificate",
+        Certificate_register(env, native_inst));
 
     /* we are now initialized */
     native_inst->initialized = true;
