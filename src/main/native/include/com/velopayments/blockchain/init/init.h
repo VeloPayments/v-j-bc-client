@@ -8,6 +8,7 @@
 #pragma once
 
 #include <com/velopayments/blockchain/cert/AttestationException.h>
+#include <com/velopayments/blockchain/cert/Certificate.h>
 #include <java/lang/IllegalStateException.h>
 #include <rcpr/allocator.h>
 #include <stdbool.h>
@@ -35,6 +36,7 @@ struct vjblockchain_native_instance
 
     ATTESTATION_EXCEPTION_JAVA_VARS();
     ILLEGAL_STATE_EXCEPTION_JAVA_VARS();
+    CERTIFICATE_JAVA_VARS();
 };
 
 /* make this header C++ friendly */
