@@ -1,11 +1,11 @@
 /**
- * \file IllegalStateException.h
+ * \file IllegalArgumentException.h
  *
- * Class and method exports for java.lang.IllegalStateException.  This header
+ * Class and method exports for java.lang.IllegalArgumentException.  This header
  * includes a static registration mechanism for creating global references to
- * the java.lang.IllegalStateException class, so that IllegalStateException
- * instances can be created from C and methods for these instances can be
- * called from C.
+ * the java.lang.IllegalArgumentException class, so that
+ * IllegalArgumentException instances can be created from C and methods for
+ * these instances can be called from C.
  *
  * \copyright 2017-2021 Velo Payments, Inc.  All rights reserved.
  */
@@ -21,11 +21,12 @@ extern "C" {
 #endif /*__cplusplus*/
 
 /* forward decls. */
-typedef struct IllegalStateException_JavaVars
-IllegalStateException_JavaVars;
+typedef struct IllegalArgumentException_JavaVars
+IllegalArgumentException_JavaVars;
 
 /**
- * Register the following IllegalStateException references and make them global.
+ * Register the following IllegalArgumentException references and make them
+ * global.
  *
  * Note: this method must be called in a synchronized static initialization
  * block in Java to ensure that there isn't a registration race.  This method
@@ -37,45 +38,45 @@ IllegalStateException_JavaVars;
  * \returns 0 on success and non-zero on failure.
  */
 int
-IllegalStateException_register(
+IllegalArgumentException_register(
     JNIEnv* env,
     vjblockchain_native_instance* inst);
 
 /**
- * \brief Java variables for IllegalStateException.
+ * \brief Java variables for IllegalArgumentException.
  */
-struct IllegalStateException_JavaVars
+struct IllegalArgumentException_JavaVars
 {
-    /* public class java.lang.IllegalStateException
+    /* public class java.lang.IllegalArgumentException
      *          extends java.lang.RuntimeException {
      */
     jclass classid;
 
-    /* public java.lang.IllegalStateException();
+    /* public java.lang.IllegalArgumentException();
      * descriptor: ()V
      */
     jmethodID init;
 
-    /* public java.lang.IllegalStateException(java.lang.String);
+    /* public java.lang.IllegalArgumentException(java.lang.String);
      * descriptor: (Ljava/lang/String;)V
      */
     jmethodID init_String;
 
-    /* public java.lang.IllegalStateException(
+    /* public java.lang.IllegalArgumentException(
      *      java.lang.String, java.lang.Throwable);
      * descriptor: (Ljava/lang/String;Ljava/lang/Throwable;)V
      */
     jmethodID init_String_Throwable;
 
-    /* public java.lang.IllegalStateException(java.lang.Throwable);
+    /* public java.lang.IllegalArgumentException(java.lang.Throwable);
      * descriptor: (Ljava/lang/Throwable;)V
      */
     jmethodID init_Throwable;
 };
 
 /* helper macro. */
-#define ILLEGAL_STATE_EXCEPTION_JAVA_VARS() \
-    IllegalStateException_JavaVars IllegalStateException
+#define ILLEGAL_ARGUMENT_EXCEPTION_JAVA_VARS() \
+    IllegalArgumentException_JavaVars IllegalArgumentException
 
 /* make this header C++ friendly */
 #ifdef __cplusplus

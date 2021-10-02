@@ -94,6 +94,33 @@ Java_com_velopayments_blockchain_init_Initializer_blockchainInit(
     INIT_OR_FAIL(
         "Certificate",
         Certificate_register(env, native_inst));
+    INIT_OR_FAIL(
+        "CertificateBuilder",
+        CertificateBuilder_register(env, native_inst));
+    INIT_OR_FAIL(
+        "IllegalArgumentException",
+        IllegalArgumentException_register(env, native_inst));
+    INIT_OR_FAIL(
+        "Integer",
+        Integer_register(env, native_inst));
+    INIT_OR_FAIL(
+        "LinkedList",
+        LinkedList_register(env, native_inst));
+    INIT_OR_FAIL(
+        "Message",
+        Message_register(env, native_inst));
+    INIT_OR_FAIL(
+        "NullPointerException",
+        NullPointerException_register(env, native_inst));
+    INIT_OR_FAIL(
+        "Signature",
+        Signature_register(env, native_inst));
+    INIT_OR_FAIL(
+        "SigningPrivateKey",
+        SigningPrivateKey_register(env, native_inst));
+    INIT_OR_FAIL(
+        "SimpleEntry",
+        SimpleEntry_register(env, native_inst));
 
     /* we are now initialized */
     native_inst->initialized = true;
