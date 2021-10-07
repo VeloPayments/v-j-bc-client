@@ -12,6 +12,7 @@
 #include <com/velopayments/blockchain/cert/CertificateBuilder.h>
 #include <com/velopayments/blockchain/crypt/Message.h>
 #include <com/velopayments/blockchain/crypt/Signature.h>
+#include <com/velopayments/blockchain/crypt/SigningKeyPair.h>
 #include <com/velopayments/blockchain/crypt/SigningPrivateKey.h>
 #include <com/velopayments/blockchain/crypt/SigningPublicKey.h>
 #include <java/lang/IllegalArgumentException.h>
@@ -54,6 +55,7 @@ struct vjblockchain_native_instance
     MESSAGE_JAVA_VARS();
     NULL_POINTER_EXCEPTION_JAVA_VARS();
     SIGNATURE_JAVA_VARS();
+    SIGNING_KEY_PAIR_JAVA_VARS();
     SIGNING_PRIVATE_KEY_JAVA_VARS();
     SIGNING_PUBLIC_KEY_JAVA_VARS();
     SIMPLE_ENTRY_JAVA_VARS();

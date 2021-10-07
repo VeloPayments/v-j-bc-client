@@ -116,6 +116,9 @@ Java_com_velopayments_blockchain_init_Initializer_blockchainInit(
         "Signature",
         Signature_register(env, native_inst));
     INIT_OR_FAIL(
+        "SigningKeyPair",
+        SigningKeyPair_register(env, native_inst));
+    INIT_OR_FAIL(
         "SigningPrivateKey",
         SigningPrivateKey_register(env, native_inst));
     INIT_OR_FAIL(
