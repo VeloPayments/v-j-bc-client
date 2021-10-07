@@ -13,7 +13,7 @@
 #include <stdbool.h>
 
 /**
- * Property: SigningKeyPair globals are set.
+ * Property: SigningPrivateKey globals are set.
  */
 #define MODEL_PROP_GLOBALS_SET(inst) \
     (   NULL != inst->SigningPrivateKey.classid \
