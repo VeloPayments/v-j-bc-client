@@ -98,6 +98,15 @@ Java_com_velopayments_blockchain_init_Initializer_blockchainInit(
         "CertificateBuilder",
         CertificateBuilder_register(env, native_inst));
     INIT_OR_FAIL(
+        "EncryptionKeyPair",
+        EncryptionKeyPair_register(env, native_inst));
+    INIT_OR_FAIL(
+        "EncryptionPrivateKey",
+        EncryptionPrivateKey_register(env, native_inst));
+    INIT_OR_FAIL(
+        "EncryptionPublicKey",
+        EncryptionPublicKey_register(env, native_inst));
+    INIT_OR_FAIL(
         "IllegalArgumentException",
         IllegalArgumentException_register(env, native_inst));
     INIT_OR_FAIL(

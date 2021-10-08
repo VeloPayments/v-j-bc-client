@@ -10,6 +10,9 @@
 #include <com/velopayments/blockchain/cert/AttestationException.h>
 #include <com/velopayments/blockchain/cert/Certificate.h>
 #include <com/velopayments/blockchain/cert/CertificateBuilder.h>
+#include <com/velopayments/blockchain/crypt/EncryptionKeyPair.h>
+#include <com/velopayments/blockchain/crypt/EncryptionPrivateKey.h>
+#include <com/velopayments/blockchain/crypt/EncryptionPublicKey.h>
 #include <com/velopayments/blockchain/crypt/Message.h>
 #include <com/velopayments/blockchain/crypt/Signature.h>
 #include <com/velopayments/blockchain/crypt/SigningKeyPair.h>
@@ -48,6 +51,9 @@ struct vjblockchain_native_instance
     ATTESTATION_EXCEPTION_JAVA_VARS();
     CERTIFICATE_JAVA_VARS();
     CERTIFICATE_BUILDER_JAVA_VARS();
+    ENCRYPTION_KEY_PAIR_JAVA_VARS();
+    ENCRYPTION_PRIVATE_KEY_JAVA_VARS();
+    ENCRYPTION_PUBLIC_KEY_JAVA_VARS();
     ILLEGAL_ARGUMENT_EXCEPTION_JAVA_VARS();
     ILLEGAL_STATE_EXCEPTION_JAVA_VARS();
     INTEGER_JAVA_VARS();
