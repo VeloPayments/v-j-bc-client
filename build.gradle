@@ -1,3 +1,5 @@
+import org.gradle.internal.os.OperatingSystem
+
 plugins {
   id 'java'
   id 'java-library'
@@ -36,13 +38,20 @@ compileJava {
 }
 
 def javaHome = System.properties.find { it.key == "java.home" }.value
+def ENV=""
+def OS = System.getProperty("os.name")
+
+if (OS.toLowerCase().equals("openbsd")) {
+    ENV="CC=egcc CXX=eg++"
+    logger.lifecycle("Setting ENV to $ENV")
+}
 
 task compileJNI {
   dependsOn compileJava
 
   doLast {
     exec {
-      commandLine 'sh', '-c', "mkdir -p build/native && cd build/native && meson -Dtool_java_home=$javaHome -Dforce_velo_toolchain=false ../.. && ninja && ninja test"
+      commandLine 'sh', '-c', "mkdir -p build/native && cd build/native && $ENV meson -Dtool_java_home=$javaHome -Dforce_velo_toolchain=false ../.. && ninja && ninja test"
     }
   }
 }
