@@ -27,6 +27,7 @@ subprojects/vcblockchain/
 subprojects/vccert/
 subprojects/vccrypt/
 subprojects/vcmodel/
+subprojects/vctool/
 subprojects/vpr/
 
 #ignore JNI auto-generated headers

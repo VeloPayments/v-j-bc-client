@@ -47,7 +47,17 @@ vcblockchain_sub = subproject('vcblockchain')
 vcblockchain_include_directories = \
     vcblockchain_sub.get_variable('vcblockchain_include_directories')
 
-jni_lib_deps = [vcblockchain]
+vctool = dependency(
+    'vctool',
+    required: true,
+    fallback : ['vctool', 'vctool_dep']
+)
+
+vctool_sub = subproject('vctool')
+vctool_include_directories = \
+    vctool_sub.get_variable('vctool_include')
+
+jni_lib_deps = [vcblockchain, vctool]
 
 java_home_include = tool_java_home / 'include'
 java_home_os_include = java_home_include / os_name
@@ -59,19 +69,22 @@ jni_include = include_directories(
 config_include = include_directories('.')
 
 jni_lib = shared_library('v-c-bc-client', src,
-  dependencies : jni_lib_deps,
-  include_directories: [vcblockchain_include_directories, jni_include, config_include],
+    dependencies : jni_lib_deps,
+    include_directories: [
+        vcblockchain_include_directories, vctool_include_directories,
+        jni_include, config_include],
 )
 
 jni_dep = declare_dependency(
-  include_directories : [vcblockchain_include_directories, jni_include, config_include],
-  dependencies : [vcblockchain]
+    include_directories : [
+        vcblockchain_include_directories, jni_include, config_include],
+    dependencies : [vcblockchain, vctool]
 )
 
 conf_data = configuration_data()
 conf_data.set('VERSION', meson.project_version())
 configure_file(
-  input : 'config.h.in',
-  output : 'config.h',
-  configuration : conf_data
+    input : 'config.h.in',
+    output : 'config.h',
+    configuration : conf_data
 )
