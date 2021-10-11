@@ -2,6 +2,7 @@ package com.velopayments.blockchain.util;
 
 import com.velopayments.blockchain.cert.*;
 import com.velopayments.blockchain.crypt.*;
+import com.velopayments.blockchain.init.Initializer;
 import java.util.UUID;
 
 public final class EntityFactory {
@@ -96,4 +97,32 @@ public final class EntityFactory {
             }
         };
     }
+
+    /**
+     * Create a PrivateEntity from an encrypted Certificate.
+     *
+     * @param encCert    The encrypted certificate from which this PrivateEntity
+     *                   is created.
+     * @param passphrase The passphrase used to encrypt this certificate.
+     */
+    public static PrivateEntity createPrivateEntityFromEncryptedCertificate(
+        byte[] encCert, byte[] passphrase) {
+
+        Certificate cert =
+            decryptCertificate(
+                Initializer.getInstance(), encCert, passphrase);
+
+        return createPrivateEntityFromCertificate(cert);
+    }
+
+    /**
+     * Decrypt a Certificate using the given passphrase.
+     * @param nativeInst    the native instance pointer.
+     * @param encCert       the encrypted certificate to decrypt.
+     * @param passphrase    the passphrase used to encrypt this certificate.
+     *
+     * @return the decrypted Certificate.
+     */
+    private static native Certificate decryptCertificate(
+        long nativeInst, byte[] encCert, byte[] passphrase);
 }
