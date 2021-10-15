@@ -7,9 +7,9 @@ import java.util.UUID;
 public interface Connection {
 
     /**
-     * Close the client connection.
+     * Reset the client connection.
      */
-    void close() throws IOException;
+    void reset() throws IOException;
 
     /**
      * Send a transaction submission request.
