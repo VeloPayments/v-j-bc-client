@@ -40,6 +40,13 @@ public class SocketAdapter {
     }
 
     /**
+     * Getter for the handle, only available for client classes and JNI.
+     */
+    protected long getHandle() {
+        return handle;
+    }
+
+    /**
      * Initialize the native portion of this adapter.
      */
     private native long initNative(long nativeInst, Socket s);
